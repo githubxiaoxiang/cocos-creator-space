@@ -1,0 +1,91 @@
+// Copyright 2020 Cao Gaoting<caogtaa@gmail.com>
+// https://caogtaa.github.io
+// This file is licensed under the MIT License.
+// License text available at https://opensource.org/licenses/MIT
+
+/*
+ * Date: 2020-07-21 16:23:10
+ * LastEditors: GT<caogtaa@gmail.com>
+ * LastEditTime: 2020-07-22 14:06:14
+*/ 
+
+CCEffect %{
+  techniques:
+  - passes:
+    - vert: vs
+      frag: fs
+      blendState:
+        targets:
+        - blend: true
+      rasterizerState:
+        cullMode: none
+      properties:
+        texture: { value: white }
+        alphaThreshold: { value: 0.5 }
+}%
+ 
+ 
+CCProgram vs %{
+  precision highp float;
+ 
+  #include <cc-global>
+  #include <cc-local>
+ 
+  in vec3 a_position;
+  in vec2 a_uv0;
+  in vec2 a_p;
+  in vec2 a_q;
+  out vec2 v_uv0;
+  out vec2 v_p;
+  out vec2 v_q;
+ 
+  void main () {
+    vec4 pos = vec4(a_position, 1);
+    pos = cc_matViewProj * pos;
+ 
+    v_uv0 = a_uv0;
+    v_p = a_p;
+    v_q = a_q; 
+    gl_Position = pos;
+  }
+}%
+ 
+ 
+CCProgram fs %{
+  precision highp float;
+  
+  #include <alpha-test>
+  #include <texture>
+  #include <cc-global>
+  #include <cc-local>
+ 
+  in vec2 v_uv0;
+  in vec2 v_p;
+  in vec2 v_q;
+  uniform sampler2D texture;
+
+  // float Remap01(float a, float b, float t) {
+  //   return (t-a) / (b-a);
+  // }
+
+  // float Remap(float a, float b, float c, float d, float t) {
+  //   return Remap01(a, b, t) * (d-c) + c;
+  // }
+
+  void main () {
+    vec2 uv = v_uv0.xy;
+    vec4 col = texture(texture, uv);
+
+    // remap to [0, 1]
+    uv = uv * v_p + v_q;
+    
+    float d = distance(uv, vec2(0.5, 0.5));
+
+    float r = 0.5 - abs(sin(cc_time.x * 2.) * 0.02);    // some trivial animation
+    float mask = smoothstep(r + 0.01, r - 0.01, d);
+    col.a = mask;
+ 
+    gl_FragColor = col;
+  }
+}%
+ 

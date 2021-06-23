@@ -1,0 +1,61 @@
+{
+  "excludeScenes": [
+    "6ffb481f-83c2-495d-8189-ea1eed63a20b",
+    "96ffbe81-2c0f-4502-b2d0-c94ab810ee0a",
+    "a31fabd6-5145-4c69-af9c-f3c4ea6db4bc",
+    "117422c2-753f-4186-a1ee-0d9083832b04",
+    "6b3edf8c-ebc1-48a6-917c-d86e708ba894",
+    "ab1f16d5-410d-4a5f-83d2-798fe9eb9605"
+  ],
+  "orientation": {
+    "landscapeLeft": false,
+    "landscapeRight": false,
+    "portrait": true,
+    "upsideDown": false
+  },
+  "packageName": "org.cocos2d.helloworld",
+  "startScene": "b01d7404-de3b-4376-8850-508beda75102",
+  "title": "CCDemos",
+  "webOrientation": "portrait",
+  "includeSDKBox": false,
+  "inlineSpriteFrames": true,
+  "inlineSpriteFrames_native": true,
+  "mainCompressionType": "default",
+  "mainIsRemote": false,
+  "optimizeHotUpdate": false,
+  "md5Cache": true,
+  "nativeMd5Cache": true,
+  "encryptJs": true,
+  "xxteaKey": "6e421c13-1ac0-44",
+  "zipCompressJs": true,
+  "fb-instant-games": {},
+  "android": {
+    "REMOTE_SERVER_ROOT": "",
+    "packageName": "com.catdid.tricks"
+  },
+  "ios": {
+    "REMOTE_SERVER_ROOT": "",
+    "packageName": "org.cocos2d.demo"
+  },
+  "mac": {
+    "REMOTE_SERVER_ROOT": "",
+    "height": 720,
+    "packageName": "org.cocos2d.demo",
+    "width": 1280
+  },
+  "win32": {
+    "REMOTE_SERVER_ROOT": "",
+    "height": 720,
+    "width": 1280
+  },
+  "android-instant": {
+    "REMOTE_SERVER_ROOT": "",
+    "host": "",
+    "packageName": "org.cocos2d.demo",
+    "pathPattern": "",
+    "recordPath": "",
+    "scheme": "https",
+    "skipRecord": false
+  },
+  "appBundle": false
+}
